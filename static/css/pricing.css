@@ -1,0 +1,234 @@
+:root {
+  --pageWidth: 1513px;
+  --pageHeight: 1858px;
+}
+
+/* main container */
+
+.container {
+  margin: 0 auto;
+  justify-content: center;
+  max-width: var(--pageWidth);
+  background-color: #f8f8ff;
+}
+
+/* main-content-container */
+
+.main-content-container {
+  display: flex;
+  justify-content: center;
+  height: 903px;
+}
+
+/* price-compare-and-empty */
+
+.price-compare-and-empty {
+  margin-top: 41px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 51px;
+}
+
+.price-compare-and-empty .price-compare {
+  height: 314px;
+  width: 722px;
+  border-radius: 30px;
+  background-color: #e4e4ef;
+  margin-right: 44px;
+}
+.price-compare-and-empty .empty {
+  height: 314px;
+  width: 449px;
+  border-radius: 30px;
+  background-color: #4f586d;
+}
+
+/* choose-anything */
+
+.choose-anything .sentense1 {
+  margin-top: 150px;
+
+  font-size: 35px;
+  font-weight: 600;
+  color: #305bf1;
+}
+.choose-anything p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #305bf1;
+}
+
+.price-options {
+  color: white;
+  display: flex;
+}
+
+.price-options .small {
+  background-color: #5d5e75;
+  height: 307px;
+  width: 263px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px gray;
+}
+
+.price-options .medium {
+  margin-left: 36px;
+  margin-right: 36px;
+  background-color: #4a4c8c;
+  height: 307px;
+  width: 263px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px gray;
+}
+.price-options .big {
+  background-color: #292c77;
+  height: 307px;
+  width: 263px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px gray;
+}
+
+/*  */
+
+.gb-container {
+  text-shadow: 3px 3px 3px rgb(51, 51, 51);
+  margin-top: 37px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.information-container {
+  text-shadow: 3px 3px 3px rgb(51, 51, 51);
+
+  margin-top: 26px;
+  list-style: none;
+  margin-left: 37px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+}
+.pricing {
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#half-usd {
+  margin-top: 59px;
+}
+#one-usd {
+  margin-top: 44px;
+}
+#two-and-half-usd {
+  margin-top: 29px;
+}
+
+.button-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.button-container button {
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  height: 53px;
+  width: 191px;
+  border-radius: 17px;
+  outline: 0;
+  border: 0;
+}
+
+.picked-option-container {
+  margin-top: 123px;
+  margin-left: 42px;
+}
+
+.picked-option-container .purchase {
+  font-size: 23px;
+  font-weight: 700;
+  color: #305bf1;
+}
+.picked-option-container .purchase-menu-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 28px;
+  height: 447px;
+  width: 305px;
+  border-radius: 20px;
+  background-color: #1f2745;
+  box-shadow: 3px 3px 3px gray;
+}
+
+#AmountOfGigaByteMonth {
+  width: 350px;
+  height: 100px;
+  margin-top: 45px;
+  margin-left: 33px;
+  font-size: 35px;
+  font-weight: 600;
+  color: white;
+}
+
+#PricePerMonth {
+  margin-left: auto;
+  margin-right: 34px;
+  display: flex;
+  font-size: 17px;
+  font-weight: 600;
+  color: white;
+}
+
+#amountOfWon {
+  margin: 0;
+}
+
+.purchase-buttons-container {
+  margin-left: 26px;
+  margin-top: 167px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  width: 117px;
+  overflow: hiddlen;
+  word-break: break-all;
+}
+
+.toss-text {
+  color: #5c8aff;
+}
+.naver-text {
+  color: #61d38d;
+}
+.kakao-text {
+  color: #f5e176;
+}
+.payco-text {
+  color: #fa5c52;
+}
+
+#pay {
+  color: white;
+}
+
+.purchase-buttons {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+.purchase-buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  height: 53px;
+  border-radius: 17px;
+  outline: 0;
+  border: 0;
+}

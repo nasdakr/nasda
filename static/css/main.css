@@ -1,0 +1,177 @@
+:root {
+  --pageWidth: 1513px;
+  --pageHeight: 1858px;
+}
+
+/* main container */
+
+.container {
+  margin: 0 auto;
+  max-width: var(--pageWidth);
+  background-color: #f8f8ff;
+}
+
+/* price-content-container */
+
+.price-content-container {
+  display: flex;
+  justify-content: center;
+  height: 491px;
+}
+
+.price-content-container .pricing {
+  width: 1215px;
+  height: 362px;
+  background-color: #021043;
+  border-radius: 30px;
+  margin-top: 129px;
+  display: flex;
+}
+
+.price-content-container .pricing p {
+  color: #ffffff;
+  margin-top: 44px;
+  margin-left: 50px;
+  font-size: 35px;
+  font-weight: 600;
+}
+.price-content-container .pricing img {
+  margin-left: 27px;
+  margin-right: 17px;
+  width: 26px;
+  height: 26px;
+}
+
+.price-content-container .pricing button {
+  color: #50596e;
+  width: 228px;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  font-size: 19px;
+  font-weight: 600;
+  outline: 0;
+  border: 0;
+  border-radius: 17px;
+  margin-left: auto;
+  margin-right: 36px;
+  margin-top: auto;
+  margin-bottom: 35px;
+  background-color: #f8f8ff;
+}
+
+/* price-compare-and-empty */
+
+.price-compare-and-empty {
+  margin-top: 41px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 51px;
+}
+
+.price-compare-and-empty .price-compare {
+  height: 314px;
+  width: 722px;
+  border-radius: 30px;
+  background-color: #e4e4ef;
+  margin-right: 44px;
+}
+.price-compare-and-empty .empty {
+  height: 314px;
+  width: 449px;
+  border-radius: 30px;
+  background-color: #4f586d;
+}
+
+/*  */
+.cheaper-price-better-service {
+  margin-top: 44px;
+  margin-left: 44px;
+  font-size: 35px;
+  font-weight: 600;
+  color: #50596e;
+}
+.price-compare-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.price-compare-container span {
+  height: 37px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: row;
+  align-items: center;
+}
+.price-compare-container img {
+  margin-left: 54px;
+  margin-right: 20px;
+}
+
+#picked {
+  margin-right: 5px;
+}
+
+.graph-rectangle1 {
+  background-color: #2454ff;
+  height: 16px;
+  border-radius: 3px;
+  animation-name: bigger1;
+  animation-duration: 1.7s;
+  animation-fill-mode: forwards;
+}
+.graph-rectangle2 {
+  background-color: #9ca4c1;
+  height: 16px;
+  border-radius: 3px;
+  animation-name: bigger2;
+  animation-duration: 1.7s;
+  animation-fill-mode: forwards;
+}
+.graph-rectangle3 {
+  background-color: #9ca4c1;
+  height: 16px;
+  border-radius: 3px;
+  animation-name: bigger3;
+  animation-duration: 1.7s;
+  animation-fill-mode: forwards;
+}
+
+.price {
+  font-size: 11px;
+  margin-left: 14px;
+  color: #626979;
+}
+.price-picked {
+  font-size: 11px;
+  margin-left: 14px;
+  color: #2454ff;
+}
+
+@keyframes bigger1 {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 198px;
+  }
+}
+@keyframes bigger2 {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 421px;
+  }
+}
+@keyframes bigger3 {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 434px;
+  }
+}
