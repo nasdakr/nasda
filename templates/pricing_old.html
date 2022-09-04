@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/common_old.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/pricing_old.css') }}" />
+    <title>nasda.</title>
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="nasda-easy-cloud">
+        <span class="nasda">nasda.</span>
+        <span class="line"></span>
+        <span class="easier-cloud">더 쉬워진 클라우드</span>
+      </div>
+      <div class="pricing-and-etc">
+        <button>가격 보러가기</button>
+        <button id="faq_btn">FAQ</button>
+        <button>구매내역 조회</button>
+      </div>
+    </header>
+    <div class="container">
+      <div class="main-content-container">
+        <div class="price-options-container">
+          <div class="choose-anything">
+            <p class="sentense1">
+              무엇을 선택해도 좋아요 ! <br />
+              자신에게 알맞는 옵션을 선택해보세요.
+            </p>
+            <p>요금 알아보기</p>
+          </div>
+          <div class="price-options">
+            <div class="small">
+              <div class="gb-container">10GB/월</div>
+              <div class="information-container">
+                <li>+ 여러 PC에서 문서 작업</li>
+                <li>+ 간단한 자료 보관</li>
+              </div>
+              <div class="pricing" id="half-usd">500원/월</div>
+              <div class="button-container"><button id="half-usd-btn">이 요금제 선택하기</button></div>
+            </div>
+            <div class="medium">
+              <div class="gb-container">300GB/월</div>
+              <div class="information-container">
+                <li>+ 여러 PC에서 문서작업</li>
+                <li>+ 다양한 자료 보관</li>
+                <li>+ 프로젝트 저장</li>
+              </div>
+              <div class="pricing" id="one-usd">9,900원/월</div>
+              <div class="button-container"><button id="one-usd-btn">이 요금제 선택하기</button></div>
+            </div>
+            <div class="big">
+              <div class="gb-container">1,000GB/월</div>
+              <div class="information-container">
+                <li>+ 여러 PC에서 문서작업</li>
+                <li>+ 엄청난 자료 보관</li>
+                <li>+ 상당한 프로젝트 저장</li>
+                <li>+ 이 외 대단한 것들..</li>
+              </div>
+              <div class="pricing" id="two-and-half-usd">27,900원/월</div>
+              <div class="button-container"><button id="two-and-half-usd-btn">Comming Soon</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="picked-option-container">
+          <div class="purchase">결제하기</div>
+          <div class="purchase-menu-container">
+            <div id="AmountOfGigaByteMonth">10GB/월</div>
+            <div id="PricePerMonth">
+              <div>
+                청구 금액
+                <p id="amountOfWon">500 원</p>
+              </div>
+            </div>
+            <div class="purchase-buttons-container">
+              <span class="toss-text">
+                토스
+                <span id="pay">페이,</span>
+              </span>
+
+              <span class="naver-text">
+                네이버
+                <span id="pay">페이,</span>
+              </span>
+
+              <span class="kakao-text">
+                카카오
+                <span id="pay">페이,</span>
+              </span>
+
+              <span class="payco-text">페이코</span>
+              등
+            </div>
+            <div class="purchase-buttons">
+              <button style="width: 162px; margin-right: 14px"><img style="width: 67px; height: 34px" src="{{ url_for('static',filename='imgs/toss.png') }}" alt="toss" /> 간편결제</button>
+              <button style="width: 77px">카드결제</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="somethingamazing-container">
+        <p>더 다양한 것들을 준비중이예요!</p>
+      </div>
+      <footer>
+        <div class="nasda-easy-cloud">
+          <span class="nasda">nasda.</span>
+          <span class="line"></span>
+          <span>더 쉬워진 클라우드</span>
+        </div>
+      </footer>
+    </div>
+    <script src="./js/license.js"></script>
+  </body>
+</html>
