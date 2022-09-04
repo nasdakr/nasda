@@ -131,9 +131,25 @@ footer {
   font-weight: 600;
 }
 
+.pre-top-nav {
+  position: fixed;
+  height: 68px;
+  margin: 0 auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: var(--pageWidth);
+  background-color: #f3f3ff;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+  color: #50596e;
+}
+
 .top-nav {
   position: fixed;
   height: 68px;
+  width: 1513px;
   margin: 0 auto;
   top: 0;
   left: 0;
