@@ -185,6 +185,7 @@ footer {
 }
 button:hover {
   background-color: #d5d8e1;
+  cursor: pointer;
 }
 
 .price-content-container .pricing button:hover {
