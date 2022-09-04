@@ -134,6 +134,7 @@
   text-align: center;
   font-weight: 600;
   font-size: 15px;
+  background-color: rgb(241, 241, 247);
   height: 53px;
   width: 191px;
   border-radius: 17px;
@@ -219,6 +220,7 @@
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
+  
 }
 .purchase-buttons button {
   display: flex;
@@ -227,6 +229,7 @@
   text-align: center;
   font-weight: 600;
   font-size: 15px;
+  background-color: rgb(241, 241, 247);
   height: 53px;
   border-radius: 17px;
   outline: 0;

@@ -17,7 +17,7 @@
       </div>
       <div class="pricing-and-etc">
         <button>가격 보러가기</button>
-        <button>FAQ</button>
+        <button id="faq_btn">FAQ</button>
         <button>구매내역 조회</button>
       </div>
     </header>
@@ -94,7 +94,7 @@
               등
             </div>
             <div class="purchase-buttons">
-              <button style="width: 162px; margin-right: 14px"><img style="width: 67px; height: 34px" src="./imgs/toss.png" alt="toss" /> 간편결제</button>
+              <button style="width: 162px; margin-right: 14px"><img style="width: 67px; height: 34px" src="{{ url_for('static',filename='imgs/toss.png') }}" alt="toss" /> 간편결제</button>
               <button style="width: 77px">카드결제</button>
             </div>
           </div>
