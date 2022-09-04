@@ -103,10 +103,6 @@ html {
   font-family: Montserrat;
 }
 
-body {
-  background-color: #F8F8FF; 
-}
-
 a {
   text-decoration: none;
 }
@@ -131,25 +127,9 @@ footer {
   font-weight: 600;
 }
 
-.pre-top-nav {
-  position: fixed;
-  height: 68px;
-  margin: 0 auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  max-width: var(--pageWidth);
-  background-color: #f3f3ff;
-  border-bottom: 1px solid black;
-  display: flex;
-  align-items: center;
-  color: #50596e;
-}
-
 .top-nav {
   position: fixed;
   height: 68px;
-  width: 1513px;
   margin: 0 auto;
   top: 0;
   left: 0;
@@ -165,7 +145,7 @@ footer {
 .top-nav .pricing-and-etc {
   margin-left: auto;
   display: flex;
-  margin-right: 119px;
+  margin-right: 100px;
 }
 
 .top-nav .pricing-and-etc a {
@@ -176,7 +156,7 @@ footer {
 }
 
 .top-nav .nasda-easy-cloud {
-  margin-left: 119px;
+  margin-left: 100  px;
 }
 /* nasda initial */
 
