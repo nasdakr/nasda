@@ -45,7 +45,7 @@
 /* choose-anything */
 
 .choose-anything .sentense1 {
-  margin-top: 150px;
+  margin-top: 125px;
 
   font-size: 35px;
   font-weight: 600;
@@ -131,31 +131,37 @@
 
 .button-container button {
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 15px;
-  background-color: rgb(241, 241, 247);
+  color: #1f2745;
+  background-color: rgb(247, 247, 252);
   height: 53px;
   width: 191px;
   border-radius: 17px;
   outline: 0;
   border: 0;
 }
+.button-container button:hover {
+  font-weight: 600;
+  color: #1b233b;
+  background-color: rgb(243, 243, 249);
+}
 
 .picked-option-container {
-  margin-top: 123px;
+  margin-top: 132px;
   margin-left: 42px;
 }
 
 .picked-option-container .purchase {
-  font-size: 23px;
-  font-weight: 700;
-  color: #305bf1;
+  font-size: 20px;
+  font-weight: 600;
+  color: #4D6EE4;
 }
 .picked-option-container .purchase-menu-container {
   display: flex;
   flex-direction: column;
-  margin-top: 28px;
-  height: 447px;
+  margin-top: 23px;
+  height: 422px;
   width: 305px;
   border-radius: 20px;
   background-color: #1f2745;
@@ -226,11 +232,17 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 15px;
-  background-color: rgb(241, 241, 247);
+  color: #1f2745;
+  background-color: rgb(247, 247, 252);
   height: 53px;
   border-radius: 17px;
   outline: 0;
   border: 0;
+}
+.purchase-buttons button:hover {
+  font-weight: 600;
+  color: #1b233b;
+  background-color: rgb(243, 243, 249);
 }
