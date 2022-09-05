@@ -21,16 +21,16 @@
 .price-content-container .pricing {
   width: 1215px;
   height: 362px;
-  background-color: #021043;
+  background-color: #123BCD;
   border-radius: 30px;
-  margin-top: 129px;
+  margin-top: 110px;
   display: flex;
 }
 
 .price-content-container .pricing p {
   color: #ffffff;
   margin-top: 44px;
-  margin-left: 50px;
+  margin-left: 54px;
   font-size: 35px;
   font-weight: 600;
 }
@@ -62,7 +62,7 @@
 /* price-compare-and-empty */
 
 .price-compare-and-empty {
-  margin-top: 41px;
+  margin-top: 22px;
   display: flex;
   justify-content: center;
   margin-bottom: 51px;
@@ -79,15 +79,29 @@
   height: 314px;
   width: 449px;
   border-radius: 30px;
-  background-color: #4f586d;
+  background-color: #030A1D;
+}
+.empty .services_list {
+  margin-top: 44px;
+  margin-left: 40px;
+  font-size: 35px;
+  font-weight: 600;
+  color: white;
+}
+.empty .services_iscsi {
+  margin-top: -10px;
+  margin-left: 40px;
+  font-size: 20px;
+  font-weight: 300;
+  color: white;
 }
 
 /*  */
 .cheaper-price-better-service {
   margin-top: 44px;
-  margin-left: 44px;
+  margin-left: 54px;
   font-size: 35px;
-  font-weight: 600;
+  font-weight: 700;
   color: #50596e;
 }
 .price-compare-container {
@@ -111,7 +125,7 @@
 }
 
 #picked {
-  margin-right: 5px;
+  margin-right: 16px;
 }
 
 .graph-rectangle1 {
