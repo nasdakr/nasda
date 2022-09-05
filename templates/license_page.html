@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/common.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/license_page.css') }}" />
+    <title>nasda.</title>
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="nasda-easy-cloud">
+        <span class="nasda" onclick="location.href='http://www.nasda.kr/'">nasda.</span>
+        <span class="line"></span>
+        <span class="easier-cloud">더 쉬워진 클라우드</span>
+      </div>
+      <div class="pricing-and-etc">
+        <button onclick="location.href='http://www.nasda.kr/pricing'">가격 보러가기</button>
+        <button id="faq_btn">FAQ</button>
+        <button onclick="location.href='http://www.nasda.kr/license'">구매내역 조회</button>
+      </div>
+    </header>
+    <div class="container">
+      <div class="title_">
+        <p>구매 내역 조회</p>
+      </div>
+      <div class="price-content-container">
+        <div class="pricing">
+          <input class="license_box" style="text-transform:uppercase" type="text" maxlength="29" placeholder="여기에 라이센스 코드를 입력해주세요.">
+        </div>
+        <button class="license_submit" onclick="api_license()">조회</button>
+      </div>
+      <div class="information-container">
+        <div class="information-container-l" style="display: inline-block;">
+          <span class="info_title">서비스 이용 기한</span>
+          <span class="info_ldesc">2022-09-01 까지</span>
+          <span class="info_title">신청 서비스</span>
+          <span class="info_ldesc">10GB (iSCSI)</span>
+          <span class="info_title">트래픽 사용량 (매월 초기화)</span>
+          <span class="info_ldesc">20.4GB / 1TB</span>
+        </div>
+        <div class="information-container-c" style="display: inline-block;">
+          <span class="center_line"></span>
+        </div>
+        <div class="information-container-r" style="display: inline-block;">
+          <span class="info_title" style="margin-bottom: 23px;">인증정보</span>
+          <p class="info_rtitle">서버<span class="info_rdesc">iscsi.nasda.kr</span></p>
+          <p class="info_rtitle">CHOP ID<span class="info_rdesc">nsda52913</span></p>
+          <p class="info_rtitle">CHOP PW<span class="info_rdesc">*************</span></p>
+          <p class="info_rtitle">개시자 이름<span class="info_rdesc">***************</span></p>
+        </div>
+      </div>
+      <div class="blank_">
+        
+      </div>
+    </div>
+      <footer>
+        <div class="nasda-easy-cloud">
+          <span class="nasda">nasda.</span>
+          <span class="line"></span>
+          <span>더 쉬워진 클라우드</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+  <script>
+    document.querySelector('.license_box').addEventListener('input', function(e) {
+      var foo = this.value.split("-").join("");
+      if (foo.length > 0) {
+        foo = foo.match(new RegExp('.{1,5}', 'g')).join("-");
+      }
+      this.value = foo;
+    });
+  </script>
+  <script>
+    function api_license() {
+      let response = fetch('http://127.0.0.1/api/license/' + document.querySelector('.license_box').value)
+            .then(res => {
+      	  return res.json()
+            })
+      .catch(reason => {
+      	   console.log('reason >>', reason)
+            })
+      .then(data => {
+        if (data.isTrue == 1) {
+          console.log("OK")
+        }
+	    
+      })
+    }
+  </script>
+</html>

@@ -1,0 +1,161 @@
+:root {
+  --pageHeight: 1858px;
+}
+
+/* main container */
+
+.container {
+  margin: 0 auto;
+  max-width: var(--pageWidth);
+  background-color: #f8f8ff;
+}
+
+.container .title_ {
+  display: flex;
+  height: 402px;
+  background-color: #123BCD;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.title_ p {
+  margin-bottom: 20px;
+  font-size: 57px;
+  font-weight: 700;
+}
+
+.container .blank_ {
+  display: flex;
+  height: 600px;
+  background-color: #f8f8ff;
+  justify-content: center;
+  align-items: center;
+}
+
+/* price-content-container */
+
+.price-content-container {
+  display: flex;
+  justify-content: center;
+  height: 200 px;
+}
+
+.price-content-container .pricing {
+  width: 1044px;
+  height: 65px;
+  background-color: #E4E4E4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  margin-top: 55px;
+  display: flex;
+}
+
+*:focus {
+  outline: none;
+}
+
+.license_box {
+  background-color: #E4E4E4;
+  color: black;
+  font-size: 20px;
+  font-weight: 100;
+  border: 0px;
+  height: 63px;
+  width: 970px;
+  margin-left: 30px;
+}
+
+.license_submit {
+  color: white;
+  width: 137px;
+  height: 65px;
+  font-size: 20px;
+  font-weight: 600;
+  outline: 0;
+  border: 0;
+  border-radius: 30px;
+  margin-left: 27px;
+  margin-top: 55px;
+  background-color: #2454FF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.license_submit:hover {
+  background-color: #1c4aef;
+}
+
+/* informaton container */
+.information-container {
+  align-items: center;
+  text-align: center;
+  margin-top: 63px;
+  height: 400px;
+}
+
+.information-container-l {
+  margin-left: 50px;
+  vertical-align:top;
+  display: flex;
+  width: 500px;
+} 
+
+.information-container-r {
+  margin-left: 50px;
+  vertical-align:top;
+  display: flex;
+  width: 500px;
+
+}
+
+.information-container-c {
+  vertical-align:top;
+  margin-top: 20px;
+  justify-content: center;
+  width: 0.7px;
+
+}
+
+.info_title {
+  display: block;
+  margin-top: 25px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 20px;
+  color: #4D6EE4;
+}
+
+.info_ldesc {
+  display: block;
+  margin-top: 5px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 35px;
+  color: #1F2331;
+  white-space: nowrap;
+}
+
+.info_rtitle {
+  display: block;
+  margin-top: -8px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 27px;
+  color: #69718F;
+}
+
+.info_rdesc {
+  margin-left: 1em; 
+  font-weight: 700;
+  font-size: 35px;
+  color: #1F2331;
+}
+
+.information-container-c .center_line {
+  display: block;
+  height: 250px;
+  border: 0;
+  border-left: 0.7px solid #50596E;
+  margin: 2em 0;
+  padding: 0;
+}
