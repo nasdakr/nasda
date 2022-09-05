@@ -139,7 +139,7 @@ footer {
   border-bottom: 1px solid black;
   display: flex;
   align-items: center;
-  color: #50596e;
+  color: #1f2745;
 }
 
 .top-nav .pricing-and-etc {
@@ -164,6 +164,9 @@ footer {
   align-items: center;
   display: flex;
 }
+.nasda-easy-cloud .nasda:hover {
+  cursor: pointer;
+}
 .nasda-easy-cloud .nasda {
   font-weight: 700;
   font-size: 19px;
@@ -182,6 +185,9 @@ footer {
 
 .top-nav button:hover {
   background-color: #d5d8e1;
+  color: #1b233b;
+  font-weight: 600;
+  
 }
 button:hover {
   background-color: #d5d8e1;
@@ -200,7 +206,7 @@ button:hover {
   color: #50596e;
   text-align: center;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   outline: 0;
   border: 0;
   background-color: rgba(0, 0, 0, 0);

@@ -4,6 +4,9 @@ app = Flask(__name__) #
 
 @app.route('/')
 def main():
+    return render_template("main.html")
+@app.route('/pricing')
+def pricing():
     return render_template("pricing.html")
 @app.route('/old')
 def oldmain():
