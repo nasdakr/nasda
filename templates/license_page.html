@@ -75,7 +75,7 @@
   </script>
   <script>
     function api_license() {
-      let response = fetch('http://nasda.kr/api/license/' + document.querySelector('.license_box').value)
+      let response = fetch('http://www.nasda.kr/api/license/' + document.querySelector('.license_box').value)
             .then(res => {
       	  return res.json()
             })
