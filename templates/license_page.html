@@ -31,24 +31,24 @@
         </div>
         <button class="license_submit" onclick="api_license()">조회</button>
       </div>
-      <div class="information-container">
+      <div class="information-container" id="main_container">
         <div class="information-container-l" style="display: inline-block;">
           <span class="info_title">서비스 이용 기한</span>
-          <span class="info_ldesc">2022-09-01 까지</span>
+          <span class="info_ldesc" id="c_date">2022-09-01 까지</span>
           <span class="info_title">신청 서비스</span>
-          <span class="info_ldesc">10GB (iSCSI)</span>
+          <span class="info_ldesc" id="c_svc">10GB (iSCSI)</span>
           <span class="info_title">트래픽 사용량 (매월 초기화)</span>
-          <span class="info_ldesc">20.4GB / 1TB</span>
+          <span class="info_ldesc" id="c_traffic">20.4GB / 1TB</span>
         </div>
         <div class="information-container-c" style="display: inline-block;">
           <span class="center_line"></span>
         </div>
         <div class="information-container-r" style="display: inline-block;">
           <span class="info_title" style="margin-bottom: 23px;">인증정보</span>
-          <p class="info_rtitle">서버<span class="info_rdesc">iscsi.nasda.kr</span></p>
-          <p class="info_rtitle">CHOP ID<span class="info_rdesc">nsda52913</span></p>
-          <p class="info_rtitle">CHOP PW<span class="info_rdesc">*************</span></p>
-          <p class="info_rtitle">개시자 이름<span class="info_rdesc">***************</span></p>
+          <p class="info_rtitle">서버<span class="info_rdesc" id="c_srv">iscsi.nasda.kr</span></p>
+          <p class="info_rtitle">CHOP ID<span class="info_rdesc" id="c_chopid">nsda52913</span></p>
+          <p class="info_rtitle">CHOP PW<span class="info_rdesc" id="c_choppw">*************</span></p>
+          <p class="info_rtitle">개시자 이름<span class="info_rdesc" id="c_init">***************</span></p>
         </div>
       </div>
       <div class="blank_">
@@ -84,7 +84,17 @@
             })
       .then(data => {
         if (data.isTrue == 1) {
-          console.log("OK")
+          document.getElementById("c_date").textContent = data.ServiceExpirationDate
+          if (data.ServiceType == 1) {
+            document.getElementById("c_svc").textContent = data.ServiceSize + "GB (iSCSI)"
+          }
+          document.getElementById("c_traffic").textContent = "준비중"
+          document.getElementById("c_srv").textContent = data.AuthServer
+          document.getElementById("c_srv").textContent = data.AuthServer
+          document.getElementById("c_chopid").textContent = data.AuthChopID
+          document.getElementById("c_choppw").textContent = data.AuthChopPW
+          document.getElementById("c_init").textContent = data.InitiatorName
+          document.getElementById('main_container').style.display= 'block';
         }
 	    
       })

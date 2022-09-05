@@ -21,9 +21,9 @@ class apihandler(Resource):
     def get(self, license):
         try:
             if license == "N8M9A-A572N-FBU4F-AXPG7-PYUHZ":            
-                return {"isTrue": 1, "ServiceCreationDate": 20220801, "ServiceExpirationDate": 20220931, "ServiceSize": 10, "ServiceType": 1, "AuthServer": "iscsi.nasda.kr", "AuthChopID": "nsda19402", "AuthChopPW": "67wfm2kknstqqq57", "InitiatorName": "data.2022-09.kr.nasda.cluster1:pw-ri06x4e2d77a"}
+                return {"isTrue": 1, "ServiceCreationDate": 20220801, "ServiceExpirationDate": 20220931, "ServiceSize": 10, "ServiceType": 1, "AuthServer": "iscsi.nasda.kr", "AuthChopID": "nsda19402", "AuthChopPW": "67wfm2kknstq7", "InitiatorName": "data.2022-09.kr.nasda.cluster1:pw-ri06x4e2d77a"}
             if license == "HFTH7-PKVQ3-BYQXC-HNELH-9J2GF":            
-                return {"isTrue": 1, "ServiceCreationDate": 20220816, "ServiceExpirationDate": 20220915, "ServiceSize": 300, "ServiceType": 1, "AuthServer": "iscsi.nasda.kr", "AuthChopID": "nsda40303", "AuthChopPW": "d1nogmsnppdg86fu", "InitiatorName": "data.2022-09.kr.nasda.cluster2:pw-1udma94kfmvk"}
+                return {"isTrue": 1, "ServiceCreationDate": 20220816, "ServiceExpirationDate": 20220915, "ServiceSize": 300, "ServiceType": 1, "AuthServer": "iscsi.nasda.kr", "AuthChopID": "nsda40303", "AuthChopPW": "d1nogmsnpp6fu", "InitiatorName": "data.2022-09.kr.nasda.cluster2:pw-1udma94kfmvk"}
             if len(license) == 29:
                 return {"isTrue": 0, "msg": "Invaild License."}
             else:

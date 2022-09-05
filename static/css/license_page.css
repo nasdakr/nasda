@@ -87,6 +87,7 @@
 
 /* informaton container */
 .information-container {
+  display: none;
   align-items: center;
   text-align: center;
   margin-top: 63px;
