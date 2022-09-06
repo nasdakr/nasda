@@ -10,12 +10,12 @@ two_and_half_usd_button.addEventListener("click", two_and_half_usd_button_presse
 
 function half_usd_button_pressed() {
   AmountOfGigaByteMonth.innerText = "10GB/월";
-  amountOfWon.innerText = "500 원";
+  amountOfWon.innerText = "500원";
   // amountOfWon.style.marginLeft = "70px";
 }
 function one_usd_button_pressed() {
   AmountOfGigaByteMonth.innerText = "300GB/월";
-  amountOfWon.innerText = "9,900 원";
+  amountOfWon.innerText = "9,900원";
   // amountOfWon.style.marginLeft = "10px";
 }
 

@@ -52,7 +52,7 @@
         </div>
       </div>
       <div class="blank_">
-        
+        <div class="lds-ripple"><div></div><div></div></div>
       </div>
     </div>
       <footer>
@@ -75,11 +75,13 @@
   </script>
   <script>
     function api_license() {
+      document.getElementsByClassName('lds-ripple')[0].style.display = 'inline-block'
       let response = fetch('http://www.nasda.kr/api/license/' + document.querySelector('.license_box').value)
             .then(res => {
       	  return res.json()
             })
       .catch(reason => {
+            document.getElementsByClassName('lds-ripple')[0].style.display = 'none'
       	   console.log('reason >>', reason)
             })
       .then(data => {
@@ -95,6 +97,7 @@
           document.getElementById("c_choppw").textContent = data.AuthChopPW
           document.getElementById("c_init").textContent = data.InitiatorName
           document.getElementById('main_container').style.display= 'block';
+          document.getElementsByClassName('lds-ripple')[0].style.display = 'none'
         }
 	    
       })

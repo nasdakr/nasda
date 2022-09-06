@@ -68,30 +68,17 @@
           <div class="purchase">결제하기</div>
           <div class="purchase-menu-container">
             <div id="AmountOfGigaByteMonth">10GB/월</div>
+            <div class="line-container"><span id="sp_line" class="sp_line"></span></div>
             <div id="PricePerMonth">
               <div>
                 청구 금액
-                <p id="amountOfWon">500 원</p>
+                <p id="amountOfWon">500원</p>
+                만료 예정일
+                <p id="expireDate">Null</p>
               </div>
             </div>
             <div class="purchase-buttons-container">
-              <span class="toss-text">
-                토스
-                <span id="pay">페이,</span>
-              </span>
-
-              <span class="naver-text">
-                네이버
-                <span id="pay">페이,</span>
-              </span>
-
-              <span class="kakao-text">
-                카카오
-                <span id="pay">페이,</span>
-              </span>
-
-              <span class="payco-text">페이코</span>
-              등
+              
             </div>
             <div class="purchase-buttons">
               <button style="width: 162px; margin-right: 14px"><img style="width: 67px; height: 34px" src="{{ url_for('static',filename='imgs/toss.png') }}" alt="toss" /> 간편결제</button>
@@ -112,5 +99,15 @@
       </footer>
     </div>
     <script src="{{ url_for('static',filename='js/license.js') }}"></script>
+    <script>
+      window.addEventListener('load', function () {
+        console.log("loadedd")
+        var date = new Date();
+        date =(new Date(date.getTime() - (date.getTimezoneOffset() * 60000)));
+        date.setDate(date.getDate() + 30)
+        console.log(String(date.toISOString()).substr(0,10))
+        document.getElementById("expireDate").textContent = String(date.toISOString()).substr(0,10)
+      })
+    </script>
   </body>
 </html>
