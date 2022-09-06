@@ -213,3 +213,26 @@ body {
     opacity: 0;
   }
 }
+
+.container .blank_ {
+  display: flex;
+  height: 160px;
+  background-color: #f8f8ff;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .blank_ p {
+  color: #1f2745;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+#lss {
+  font-size: 32px;
+  font-weight: 300;
+}
+#ls {
+  font-size: 45px;
+  font-weight: 700;
+}

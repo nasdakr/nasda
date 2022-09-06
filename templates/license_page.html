@@ -58,6 +58,7 @@
       </div>
       <div class="blank_">
         <div class="lds-ripple"><div></div><div></div></div>
+        <p id="AlertMessage"></p>
       </div>
     </div>
       <footer>
@@ -87,10 +88,12 @@
             })
       .catch(reason => {
             document.getElementsByClassName('lds-ripple')[0].style.display = 'none'
-      	   console.log('reason >>', reason)
+            document.getElementById('AlertMessage').textContent = "서버와 통신중에 오류가 발생했어요"
+      	    console.log('reason >>', reason)
             })
       .then(data => {
         if (data.isTrue == 1) {
+          document.getElementById('AlertMessage').textContent = ""
           document.getElementById("c_date").textContent = data.ServiceExpirationDate
           if (data.ServiceType == 1) {
             document.getElementById("c_svc").textContent = data.ServiceSize + "GB (iSCSI)"
@@ -104,15 +107,16 @@
           document.getElementById('main_container').style.display= 'block';
           document.getElementsByClassName('lds-ripple')[0].style.display = 'none'
         } else if (data.isTrue == 0) {
+          document.getElementById('AlertMessage').textContent = "라이센스가 존재하지 않아요"
           document.getElementsByClassName('lds-ripple')[0].style.display = 'none'
       	  console.log( "isTrue = 0")
           console.log(data)
         } else if (data.isTrue == 2) {
+          document.getElementById('AlertMessage').textContent = "서버를 만드는 중 이에요"
           document.getElementsByClassName('lds-ripple')[0].style.display = 'none'
       	  console.log("isTrue = 2 서버 생성 중")
           console.log(data)
         }
-	    
       })
     }
   </script>
