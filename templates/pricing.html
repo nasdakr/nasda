@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/common.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static',filename='css/pricing.css') }}" />
     <title>nasda.</title>
+    <script src="https://js.tosspayments.com/v1"></script>
   </head>
   <body>
     <header class="top-nav">
@@ -33,7 +34,7 @@
           </div>
           <div class="price-options">
             <div class="small">
-              <div class="gb-container">10GB/월</div>
+              <div class="gb-container" id="gbs">10GB/월</div>
               <div class="information-container">
                 <li>+ 여러 PC에서 문서 작업</li>
                 <li>+ 간단한 자료 보관</li>
@@ -44,7 +45,7 @@
             <div class="medium">
               <div class="gb-container">300GB/월</div>
               <div class="information-container">
-                <li>+ 여러 PC에서 문서작업</li>
+                <li>+ 여러 PC에서 동시작업</li>
                 <li>+ 다양한 자료 보관</li>
                 <li>+ 프로젝트 저장</li>
               </div>
@@ -54,7 +55,7 @@
             <div class="big">
               <div class="gb-container">1,000GB/월</div>
               <div class="information-container">
-                <li>+ 여러 PC에서 문서작업</li>
+                <li>+ 여러 PC에서 동시작업</li>
                 <li>+ 엄청난 자료 보관</li>
                 <li>+ 상당한 프로젝트 저장</li>
                 <li>+ 이 외 대단한 것들..</li>
@@ -81,7 +82,7 @@
               
             </div>
             <div class="purchase-buttons">
-              <button style="width: 162px; margin-right: 14px"><img style="width: 67px; height: 34px" src="{{ url_for('static',filename='imgs/toss.png') }}" alt="toss" /> 간편결제</button>
+              <button onclick="toss_test()" style="width: 162px; margin-right: 14px"><img style="width: 67px; height: 34px" src="{{ url_for('static',filename='imgs/toss.png') }}" alt="toss" /> 간편결제</button>
               <button style="width: 77px">카드결제</button>
             </div>
           </div>
@@ -98,6 +99,32 @@
         </div>
       </footer>
     </div>
+    <script>
+      const generateRandomString = (num) => {
+        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        let result = '';
+        const charactersLength = characters.length;
+        for (let i = 0; i < num; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+      
+        return result;
+      }
+      function toss_test () {
+        console.log(document.getElementById("amountOfWon").textContent)
+        console.log("Payment Processing")
+        var clientKey = 'test_ck_k6bJXmgo28emWzZdjGY8LAnGKWx4'
+        var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
+        tossPayments.requestPayment('토스페이', { // 결제 수단
+          // 결제 정보
+          amount: Number(document.getElementById("amountOfWon").textContent.replace(',','').replace('원', '')),
+          orderId: generateRandomString(64),
+          orderName: "nasda. " + document.getElementById("gbs").textContent,
+          successUrl: 'http://localhost:80/api/payment/success',
+          failUrl: 'http://localhost:80/api/payment/fail'
+        })
+      }
+    </script>
     <script src="{{ url_for('static',filename='js/license.js') }}"></script>
     <script>
       window.addEventListener('load', function () {

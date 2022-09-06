@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/common.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/payment_success.css') }}" />
+    <title>nasda.</title>
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="nasda-easy-cloud">
+        <span class="nasda" onclick="location.href='http://www.nasda.kr/'">nasda.</span>
+        <span class="line"></span>
+        <span class="easier-cloud">더 쉬워진 클라우드</span>
+      </div>
+      <div class="pricing-and-etc">
+        <button onclick="location.href='http://www.nasda.kr/pricing'">가격 보러가기</button>
+        <button id="faq_btn">FAQ</button>
+        <button onclick="location.href='http://www.nasda.kr/license'">구매내역 조회</button>
+      </div>
+    </header>
+    <div class="container">
+      <div class="title_">
+        <p>🎉 구매가 완료 되었어요 🎉</p>
+      </div>
+      <div class="blank_">
+        <p>서버를 준비중이에요. 1~2분 후 구매내역을 조회해보세요.
+        </p>
+      </div>
+      <div class="blank_">
+        <p id="lss">라이센스 코드 : <span id="ls"></span></p>
+      </div>
+      <div class="blank_">  
+        <button class="download" onclick="init_download()">저장하기</button>
+      </div>
+      <div class="blank_">  
+      </div>
+      
+    </div>
+      <footer>
+        <div class="nasda-easy-cloud">
+          <span class="nasda">nasda.</span>
+          <span class="line"></span>
+          <span>더 쉬워진 클라우드</span>
+        </div>
+      </footer>
+    </div>
+    <script>
+      function init_download() {
+        console.log("Downloading")
+        function download(filename, text) {
+          var element = document.createElement('a');
+          element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+          element.setAttribute('download', filename);
+
+          element.style.display = 'none';
+          document.body.appendChild(element);
+
+          element.click();
+
+          document.body.removeChild(element);
+        
+        }
+        download('nasda_license.txt', document.getElementById("ls").textContent)
+      }
+      
+    </script>
+    <script>
+      let param = location.pathname;
+      let id = param.substr(17, 29)
+      console.log(id)
+      document.getElementById("ls").textContent = id
+    </script>
+  </body>
+</html>

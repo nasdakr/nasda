@@ -1,5 +1,7 @@
-from flask import Flask, render_template, jsonify
+from urllib import request
+from flask import Flask, render_template, jsonify, request, redirect, url_for
 
+import requests
 app = Flask(__name__) #
 
 @app.route('/')
@@ -14,6 +16,25 @@ def license():
 @app.route('/old')
 def oldmain():
     return render_template("pricing_old.html")
+@app.route('/api/payment/success')
+def payment_sucess():
+    headers = {
+        'Authorization': 'Basic dGVzdF9za19aMFJuWVgydzUzMllBUHdaUktNOE5leXFBcFFFOg==',
+        'Content-Type': 'application/json'
+    }
+    r = requests.post(url="https://api.tosspayments.com/v1/payments/confirm", headers=headers, json={"paymentKey": request.args.get('paymentKey'), "orderId": request.args.get('orderId'), "amount": request.args.get('amount')})
+    print(r.status_code)
+    #내부 라이센스 생성 서버 호출
+    # -- 라이센스 먼저 리턴 한 후 생성 시작
+    #
+    license = "N8M9A-A572N-FBU4F-AXPG7-PYUHZ"
+    return redirect(url_for('success_page', license=f"{license}")) #예시
+
+@app.route('/payment_success/<string:license>')
+def success_page(license):
+    print(license)
+    return render_template('payment_success.html')
+
 @app.route('/api/license/<string:license>')
 def get(license):
     try:

@@ -1,0 +1,67 @@
+:root {
+  --pageHeight: 1858px;
+}
+
+/* main container */
+
+.container {
+  margin: 0 auto;
+  max-width: var(--pageWidth);
+  background-color: #f8f8ff;
+}
+
+.container .title_ {
+  display: flex;
+  height: 350px;
+  background-color: #123BCD;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.title_ p {
+  margin-bottom: 0px;
+  font-size: 57px;
+  font-weight: 700;
+}
+
+.container .blank_ {
+  display: flex;
+  height: 160px;
+  background-color: #f8f8ff;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .blank_ p {
+  color: #1f2745;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+#lss {
+  font-size: 32px;
+  font-weight: 300;
+}
+#ls {
+  font-size: 45px;
+  font-weight: 700;
+}
+.download {
+  color: white;
+  width: 150px;
+  height: 65px;
+  font-size: 20px;
+  font-weight: 600;
+  outline: 0;
+  border: 0;
+  border-radius: 30px;
+  margin-left: 27px;
+  margin-top: 40px;
+  background-color: #2454FF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.download:hover {
+  background-color: #1c4aef;
+}

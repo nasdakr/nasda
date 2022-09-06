@@ -56,12 +56,13 @@
 }
 
 .license_box {
+  margin-top: 13px;
   background-color: #E4E4E4;
   color: black;
   font-size: 20px;
   font-weight: 100;
   border: 0px;
-  height: 63px;
+  height: 40px;
   width: 770px;
   margin-left: 30px;
 }
