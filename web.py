@@ -1,9 +1,13 @@
 from urllib import request
-from flask import Flask, render_template, jsonify, request, redirect, url_for, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import os
-
+import json
 import requests
+
+from module.license_gen import generate_license
 app = Flask(__name__) #
+
+#WEB
 
 @app.route('/')
 def main():
@@ -22,37 +26,46 @@ def license():
 @app.route('/old')
 def oldmain():
     return render_template("pricing_old.html")
-@app.route('/api/payment/success')
+
+#PAYMENT
+
+@app.route('/api/iscsi_payment/success')
 def payment_sucess():
     headers = {
         'Authorization': 'Basic dGVzdF9za19aMFJuWVgydzUzMllBUHdaUktNOE5leXFBcFFFOg==',
         'Content-Type': 'application/json'
     }
     r = requests.post(url="https://api.tosspayments.com/v1/payments/confirm", headers=headers, json={"paymentKey": request.args.get('paymentKey'), "orderId": request.args.get('orderId'), "amount": request.args.get('amount')})
-    print(r.status_code)
-    #내부 라이센스 생성 서버 호출
-    # -- 라이센스 먼저 리턴 한 후 생성 시작
-    #
-    license = "N8M9A-A572N-FBU4F-AXPG7-PYUHZ"
-    return redirect(url_for('success_page', license=f"{license}")) #예시
+    if r.status_code == 200:
+        print("[*] 승인 완료")
+    else:
+        print("[*] 승인 오류")
+        
+    gen_license = generate_license(1, request.args.get('amount'))
+    if gen_license == "400":
+        return redirect(url_for(main)) #실패 페이지 만들어야댐
+    print(gen_license)
+    try:
+        return redirect(url_for('success_page', license=f"{gen_license}")) #예시
+    finally:
+        None
+        #여기에 d
 
 @app.route('/payment_success/<string:license>')
 def success_page(license):
     print(license)
     return render_template('payment_success.html')
 
-@app.route('/api/license/<string:license>')
+#API
+
+@app.route('/api/license/<string:license>') #0 = error, 1 = ready, 2 = working
 def get(license):
-    try:
-        if license == "N8M9A-A572N-FBU4F-AXPG7-PYUHZ":            
-            return {"isTrue": 1, "ServiceCreationDate": 20220801, "ServiceExpirationDate": 20220931, "ServiceSize": 10, "ServiceType": 1, "AuthServer": "iscsi.nasda.kr", "AuthChopID": "nsda19402", "AuthChopPW": "67wfm2kknstq7", "InitiatorName": "data.2022-09.kr.nasda.cluster1:pw-ri06x4e2d77a"}
-        if license == "HFTH7-PKVQ3-BYQXC-HNELH-9J2GF":            
-            return {"isTrue": 1, "ServiceCreationDate": 20220816, "ServiceExpirationDate": 20220915, "ServiceSize": 300, "ServiceType": 1, "AuthServer": "iscsi.nasda.kr", "AuthChopID": "nsda40303", "AuthChopPW": "d1nogmsnpp6fu", "InitiatorName": "data.2022-09.kr.nasda.cluster2:pw-1udma94kfmvk"}
-        if len(license) == 29:
-            return {"isTrue": 0, "msg": "Invaild License."}
-        else:
-            return {"isTrue": 0, "msg": "Invaild Format."}
-    except:
+    with open("module/db.json", "r") as f:
+        data = json.load(f)
+    print(data)
+    if license in data:
+        return data[license]
+    else:
         return {"isTrue": 0, "msg": "Excepted Unknown Error."}
 
 if __name__ == "__main__":

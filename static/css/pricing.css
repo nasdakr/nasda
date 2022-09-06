@@ -3,6 +3,9 @@
 }
 
 /* main container */
+body {
+  margin: 0;
+}
 
 .container {
   margin: 0 auto;

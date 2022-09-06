@@ -103,6 +103,10 @@ html {
   font-family: Montserrat;
 }
 
+body {
+  margin: 0;
+}
+
 a {
   text-decoration: none;
 }
