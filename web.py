@@ -1,5 +1,6 @@
 from urllib import request
-from flask import Flask, render_template, jsonify, request, redirect, url_for
+from flask import Flask, render_template, jsonify, request, redirect, url_for, send_from_directory
+import os
 
 import requests
 app = Flask(__name__) #
@@ -7,6 +8,11 @@ app = Flask(__name__) #
 @app.route('/')
 def main():
     return render_template("main.html")
+    
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='favicon.ico')
 @app.route('/pricing')
 def pricing():
     return render_template("pricing.html")
