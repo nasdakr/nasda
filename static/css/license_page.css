@@ -224,15 +224,6 @@ body {
 
 .container .blank_ p {
   color: #1f2745;
-  font-size: 40px;
-  font-weight: 500;
-}
-
-#lss {
-  font-size: 32px;
+  font-size: 35px;
   font-weight: 300;
-}
-#ls {
-  font-size: 45px;
-  font-weight: 700;
 }
