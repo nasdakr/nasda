@@ -120,8 +120,8 @@
           amount: Number(document.getElementById("amountOfWon").textContent.replace(',','').replace('원', '')),
           orderId: generateRandomString(64),
           orderName: "nasda. " + document.getElementById("gbs").textContent,
-          successUrl: 'http://localhost:80/api/payment/success',
-          failUrl: 'http://localhost:80/api/payment/fail'
+          successUrl: 'http://www.nasda.kr/api/payment/success',
+          failUrl: 'http://www.nasda.kr/api/payment/fail'
         })
       }
     </script>
