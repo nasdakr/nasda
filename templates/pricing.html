@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="nasda." property="og:title" />
-    <meta content="//localhost:80" property="og:url" />
+    <meta content="//www.nasda.kr" property="og:url" />
     <meta content="더 쉬워진 클라우드" property="og:description" />
     <meta content="{{ url_for('static',filename='ogimage.png') }}" property="og:image" />
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
@@ -17,14 +17,14 @@
   <body>
     <header class="top-nav">
       <div class="nasda-easy-cloud">
-        <span class="nasda" onclick="location.href='http://localhost:80/'">nasda.</span>
+        <span class="nasda" onclick="location.href='http://www.nasda.kr/'">nasda.</span>
         <span class="line"></span>
         <span class="easier-cloud">더 쉬워진 클라우드</span>
       </div>
       <div class="pricing-and-etc">
-        <button onclick="location.href='http://localhost:80/pricing'">가격 보러가기</button>
+        <button onclick="location.href='http://www.nasda.kr/pricing'">가격 보러가기</button>
         <button id="faq_btn">FAQ</button>
-        <button onclick="location.href='http://localhost:80/license'">구매내역 조회</button>
+        <button onclick="location.href='http://www.nasda.kr/license'">구매내역 조회</button>
       </div>
     </header>
     <div class="container">
@@ -125,8 +125,8 @@
           amount: Number(document.getElementById("amountOfWon").textContent.replace(',','').replace('원', '')),
           orderId: generateRandomString(64),
           orderName: "nasda 블록 스토리지(iSCSI)",
-          successUrl: 'http://localhost:80/api/iscsi_payment/success',
-          failUrl: 'http://localhost:80/api/payment/fail'
+          successUrl: 'http://www.nasda.kr/api/iscsi_payment/success',
+          failUrl: 'http://www.nasda.kr/api/payment/fail'
         })
       }
     </script>

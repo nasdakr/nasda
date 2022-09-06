@@ -81,7 +81,7 @@
   <script>
     function api_license() {
       document.getElementsByClassName('lds-ripple')[0].style.display = 'inline-block'
-      let response = fetch('http://localhost:80/api/license/' + document.querySelector('.license_box').value)
+      let response = fetch('http://www.nasda.kr/api/license/' + document.querySelector('.license_box').value)
             .then(res => {
       	  return res.json()
             })
