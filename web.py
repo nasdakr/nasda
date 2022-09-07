@@ -8,7 +8,6 @@ from module.license_gen import generate_license
 app = Flask(__name__) #
 
 #WEB
-
 @app.route('/')
 def main():
     return render_template("main.html")

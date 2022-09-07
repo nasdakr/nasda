@@ -22,7 +22,7 @@ def generate_license(service_type, amount):
         if code in data:
             generate_license(service_type, amount) #재귀
         print(code)
-        data[code] = {"isTrue": 2, "ServiceCreationDate": time(), "ServiceSize": size, "ServiceType": 1, "AuthServer": None, "AuthChopID": None, "AuthChopPW": None, "InitiatorName": None}
+        data[code] = {"isTrue": 2, "ServiceCreationDate": time(), "ServiceSize": size, "ServiceType": 1, "AuthServer": None, "AuthChopID": "0", "AuthChopPW": None, "InitiatorName": None}
         with open("module/db.json", "w") as f: #isTrue 2 = 준비중 표시
             json.dump(data, f)
 
