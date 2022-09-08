@@ -5,6 +5,7 @@ import json
 import requests
 
 from module.license_gen import generate_license
+from module.iSCSI_module import iSCSI_init
 app = Flask(__name__) #
 
 #WEB
@@ -43,11 +44,14 @@ def payment_sucess():
     gen_license = generate_license(1, request.args.get('amount'))
     if gen_license == "400":
         return redirect(url_for(main)) #실패 페이지 만들어야댐
-    print(gen_license)
+    got_license = (gen_license)
     try:
         return redirect(url_for('success_page', license=f"{gen_license}")) #예시
     finally:
-        None
+        print("Starting")
+        r_value = iSCSI_init(got_license)
+        print("Done!")
+        print(r_value)
         #여기에 d
 
 @app.route('/payment_success/<string:license>')

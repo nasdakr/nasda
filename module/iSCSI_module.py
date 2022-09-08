@@ -14,7 +14,7 @@ def iSCSI_init(license):
         secret_key += random.choice(STRING_POOL)
     SERVER_ADDY = "http://iscsi.nasda.kr/api/v2.0/"
 
-    headers={'Content-Type': 'application/json', 'Authorization': 'Bearer 1-FTmVzuWj1QidtKPrcJxuV2MZUTS32mcApFnG8c46fknMXp9QdlBUAG60uCy39XCl'}
+    headers={'Content-Type': 'application/json', 'Authorization': 'Bearer 1-gzzxK2z53np5utg30mXakv4sca8FMbLJ7YunvWRrRDuxx4t0iYYAIaEQKHb2OAQb'}
     with open("module/db.json", "r") as f:
         data = json.load(f)
     id = str(random.randrange(10000, 99999))
@@ -22,17 +22,23 @@ def iSCSI_init(license):
         if "nsda" + id == data[i]['AuthChopID']:
             print("재귀 발생")
             iSCSI_init(license)
+    if not "0" == data[i]['AuthChopID']:
+        print("이미 등록된 라이센스.")
+        return "405"
     id = "nsda" + id
+    data[license]['AuthServer'] = 'iscsi.nasda.kr'
+    data[license]['AuthChopID'] = id
     print(f"[*] 할당 id : {id}")
     #10GB Zvol 생성
     print("[*] Zvol 생성 시작")
-    volsize = 1073743462 * data[license]["ServiceSize"]
+    volsize = int(10737434624 * data[license]["ServiceSize"] / 10)
+    print(volsize)
     gbs = data[license]["ServiceSize"]
     r = requests.post(
       f'{SERVER_ADDY}pool/dataset',
       headers=headers,
       data=json.dumps({
-           "name": f"nasda_SSD_1/{gbs}GB_{id}",
+           "name": f"nasda_HDD_1/{gbs}GB_{id}",
            "comments": "made by python init server",
            "volsize": volsize,
            "sync": "STANDARD",
@@ -44,7 +50,7 @@ def iSCSI_init(license):
        })
     )
     print(r.json())
-    if r.json()["id"] == f"nasda_SSD_1/{gbs}GB_{id}":
+    if r.json()["id"] == f"nasda_HDD_1/{gbs}GB_{id}":
         print("SUCESS")
     else:
         print(r.json())
@@ -60,12 +66,14 @@ def iSCSI_init(license):
            "comment": "made by python init server"
        })
      )
-    if r.json()["initiators"][0] == f"data.2022-09.kr.nasda.cluster1:{initiator}":
+    if r.json()["initiators"][0] == f"data.2022-09.kr.nasda.cluster1:pass-{initiator}":
         print("SUCESS")
         initiator_id = int(r.json()["id"])
+        data[license]['InitiatorName'] = f"data.2022-09.kr.nasda.cluster1:pass-{initiator}"
     else:
         print(r.json())
         exit(0)
+    
     #target 생성 
     print("[*] Target 생성 시작")   
     r = None
@@ -78,6 +86,7 @@ def iSCSI_init(license):
            "groups": [{"portal": 1, "initiator": initiator_id, "authmethod": "NONE", "auth": 0}]
        })
      )
+    print(r.json())
     if r.json()["name"] == f"{id}":
         print("SUCESS")
         target_id = r.json()["id"]
@@ -92,7 +101,7 @@ def iSCSI_init(license):
       headers=headers,
       data=json.dumps({
             "blocksize": 512,
-            "disk": f"zvol/nasda_SSD_1/10GB_{id}", #나중에 하드 여러개 생겼을 경우 능동적으로 pool 선택 하는거 추가 필요. ex) 1 ~ 순서대로 용량 차면 다음 풀 이용.
+            "disk": f"zvol/nasda_HDD_1/{gbs}GB_{id}", #나중에 하드 여러개 생겼을 경우 능동적으로 pool 선택 하는거 추가 필요. ex) 1 ~ 순서대로 용량 차면 다음 풀 이용.
             "enabled": True,
             "filesize": 0,
             "insecure_tpc": True,
@@ -101,6 +110,7 @@ def iSCSI_init(license):
             "type": "DISK"
        })
      )
+    print(r.json())
     if r.json()["name"] == f"{id}":
         print("SUCESS")
         extent_id = r.json()["id"]
@@ -123,6 +133,7 @@ def iSCSI_init(license):
     else:
         print(r.json())
         exit(0)
+    data[license]['AuthChopPW'] = secret_key
 
     #Auth 생성 == 로그인 정보
     print("[*] 로그인 정보 생성 시작")
@@ -138,6 +149,9 @@ def iSCSI_init(license):
             "peersecret": ""
        })
      )
+    data[license]['isTrue'] = 1
+    with open("module/db.json", "w") as f:
+            json.dump(data, f)
     if r.json()["user"] == f"{id}":
         print("SUCESS")
         auth_id = r.json()["id"]
@@ -152,4 +166,3 @@ def iSCSI_init(license):
     print(f"[+] Initiator 이름 : data.2022-09.kr.nasda.cluster1:pass-{initiator}")
     print(f"[+] Initiator 그룹 id (관리자용) : {initiator_id}")
     print(f"[+] 소요 시간 : {time.time() - start_time}")
-iSCSI_init("66GTQ-1CXFW-HZZZ2-JIANT-MTI3V")

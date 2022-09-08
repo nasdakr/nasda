@@ -51,12 +51,13 @@
         <div class="information-container-r" style="display: inline-block;">
           <span class="info_title" style="margin-bottom: 23px;">인증정보</span>
           <p class="info_rtitle">서버<span class="info_rdesc" id="c_srv">iscsi.nasda.kr</span></p>
-          <p class="info_rtitle">CHOP ID<span class="info_rdesc" id="c_chopid">nsda52913</span></p>
-          <p class="info_rtitle">CHOP PW<span class="info_rdesc" id="c_choppw">*************</span></p>
+          <p class="info_rtitle">CHOP-ID<span class="info_rdesc" id="c_chopid">nsda52913</span></p>
+          <p class="info_rtitle">CHOP-PW<span class="info_rdesc" id="c_choppw">*************</span></p>
           <p class="info_rtitle">개시자 이름<span class="info_rdesc" id="c_init">***************</span></p>
         </div>
       </div>
       <div class="blank_">
+        <button class="download" onclick="init_download()">저장하기</button>
       </div>
       <div class="blank_">
         <div class="lds-ripple"><div></div><div></div></div>
@@ -76,6 +77,30 @@
       </footer>
     </div>
   </body>
+  <script>
+    function init_download() {
+      console.log("Downloading")
+      function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+      
+      }
+      download('test.bat', `sc config msiscsi start=auto
+net start msiscsi
+iscsicli NodeName ` + document.getElementById("c_init").textContent + `
+iscsicli QAddTargetPortal ` + document.getElementById("c_srv").textContent + ` ` + document.getElementById("c_chopid").textContent + ` ` + document.getElementById("c_choppw").textContent + `
+iscsicpl`)
+    }
+    
+  </script>
   <script>
     document.querySelector('.license_box').addEventListener('input', function(e) {
       var foo = this.value.split("-").join("");
@@ -99,8 +124,11 @@
             })
       .then(data => {
         if (data.isTrue == 1) {
+          let date = new Date(Number(data.ServiceCreationDate)*1000);
+          date.setDate(date.getDate() + 30)
+          console.log(date.toLocaleDateString("ko-KR"));
           document.getElementById('AlertMessage').textContent = ""
-          document.getElementById("c_date").textContent = data.ServiceExpirationDate
+          document.getElementById("c_date").textContent = String(date.toLocaleDateString("ko-KR"))
           if (data.ServiceType == 1) {
             document.getElementById("c_svc").textContent = data.ServiceSize + "GB (iSCSI)"
           }
