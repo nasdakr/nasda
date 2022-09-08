@@ -61,15 +61,15 @@ def iSCSI_init(license):
       f'{SERVER_ADDY}iscsi/initiator',
       headers=headers,
       data=json.dumps({
-           "initiators": [f"data.2022-09.kr.nasda.cluster1:pass-{initiator}"],
+           "initiators": [f"iqn.2022-09.kr.nasda.cluster1:pass-{initiator}"],
            "auth_network": [],
            "comment": "made by python init server"
        })
      )
-    if r.json()["initiators"][0] == f"data.2022-09.kr.nasda.cluster1:pass-{initiator}":
+    if r.json()["initiators"][0] == f"iqn.2022-09.kr.nasda.cluster1:pass-{initiator}":
         print("SUCESS")
         initiator_id = int(r.json()["id"])
-        data[license]['InitiatorName'] = f"data.2022-09.kr.nasda.cluster1:pass-{initiator}"
+        data[license]['InitiatorName'] = f"iqn.2022-09.kr.nasda.cluster1:pass-{initiator}"
     else:
         print(r.json())
         exit(0)
@@ -162,7 +162,7 @@ def iSCSI_init(license):
     print("===========================================")
     print(f"[+] 연결 CHOP id : {id}")
     print(f"[+] 연결 CHOP PW : {secret_key}") 
-    print(f"[+] 연결 Target : data.2022-09.kr.nasda.cluster1:{id}") 
-    print(f"[+] Initiator 이름 : data.2022-09.kr.nasda.cluster1:pass-{initiator}")
+    print(f"[+] 연결 Target : iqn.2022-09.kr.nasda.cluster1:{id}") 
+    print(f"[+] Initiator 이름 : iqn.2022-09.kr.nasda.cluster1:pass-{initiator}")
     print(f"[+] Initiator 그룹 id (관리자용) : {initiator_id}")
     print(f"[+] 소요 시간 : {time.time() - start_time}")

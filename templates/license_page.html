@@ -56,8 +56,9 @@
           <p class="info_rtitle">개시자 이름<span class="info_rdesc" id="c_init">***************</span></p>
         </div>
       </div>
-      <div class="blank_">
-        <button class="download" onclick="init_download()">저장하기</button>
+      <div class="blank_" class="manual_p" id="manual_p">
+        <button class="download" onclick="init_download()">윈도우용 간편설치</button>
+        <span id="manual">※ 실행 후 켜지는 프로그램의 안내에 따라주세요. </span>
       </div>
       <div class="blank_">
         <div class="lds-ripple"><div></div><div></div></div>
@@ -93,11 +94,16 @@
         document.body.removeChild(element);
       
       }
-      download('test.bat', `sc config msiscsi start=auto
+      download('easy_setup.bat', `sc config msiscsi start=auto
 net start msiscsi
 iscsicli NodeName ` + document.getElementById("c_init").textContent + `
 iscsicli QAddTargetPortal ` + document.getElementById("c_srv").textContent + ` ` + document.getElementById("c_chopid").textContent + ` ` + document.getElementById("c_choppw").textContent + `
-iscsicpl`)
+iscsicpl
+echo (1/2) 켜진 창에서 새로고침 후 iqn.2022-09.kr.nasda.cluster1` + document.getElementById("c_chopid").textContent + `를 연결 해주세요.` + `
+pause
+echo (2/2) 새로 생긴 디스크를 포맷 해주세요.
+diskmgmt.msc
+`)
     }
     
   </script>
@@ -113,7 +119,7 @@ iscsicpl`)
   <script>
     function api_license() {
       document.getElementsByClassName('lds-ripple')[0].style.display = 'inline-block'
-      let response = fetch('http://www.nasda.kr/api/license/' + document.querySelector('.license_box').value)
+      let response = fetch('http://localhost:80/api/license/' + document.querySelector('.license_box').value)
             .then(res => {
       	  return res.json()
             })
@@ -132,6 +138,7 @@ iscsicpl`)
           if (data.ServiceType == 1) {
             document.getElementById("c_svc").textContent = data.ServiceSize + "GB (iSCSI)"
           }
+          console
           document.getElementById("c_traffic").textContent = "준비중"
           document.getElementById("c_srv").textContent = data.AuthServer
           document.getElementById("c_srv").textContent = data.AuthServer
@@ -139,7 +146,9 @@ iscsicpl`)
           document.getElementById("c_choppw").textContent = data.AuthChopPW
           document.getElementById("c_init").textContent = data.InitiatorName
           document.getElementById('main_container').style.display= 'block';
+          document.getElementById('manual_p').style.display = 'flex';
           document.getElementsByClassName('lds-ripple')[0].style.display = 'none'
+          /* document.getElementById("manual").textContent = "※ 실행 후 켜지는 창에서 " + "iqn.2022-09.kr.nasda.cluster1:" + data.AuthChopID + " 에 연결하세요." */
         } else if (data.isTrue == 0) {
           document.getElementById('AlertMessage').textContent = "존재하지 않는 라이센스에요."
           document.getElementsByClassName('lds-ripple')[0].style.display = 'none'
