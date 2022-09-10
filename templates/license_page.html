@@ -94,14 +94,17 @@
         document.body.removeChild(element);
       
       }
-      download('easy_setup.bat', `sc config msiscsi start=auto
+      download('easy_setup.bat', `chcp 65001
+@echo off
+echo 서비스를 시작 중.
+sc config msiscsi start=auto
 net start msiscsi
+echo (1/2) 켜진 창에서 새로고침 후 iqn.2022-09.kr.nasda.cluster1` + document.getElementById("c_chopid").textContent + `
 iscsicli NodeName ` + document.getElementById("c_init").textContent + `
-iscsicli QAddTargetPortal ` + document.getElementById("c_srv").textContent + ` ` + document.getElementById("c_chopid").textContent + ` ` + document.getElementById("c_choppw").textContent + `
+iscsicli QAddTargetPortal ` + document.getElementById("c_srv").textContent + ` ` + document.getElementById("c_choppw").textContent + `
 iscsicpl
-echo (1/2) 켜진 창에서 새로고침 후 iqn.2022-09.kr.nasda.cluster1` + document.getElementById("c_chopid").textContent + `를 연결 해주세요.` + `
 pause
-echo (2/2) 새로 생긴 디스크를 포맷 해주세요.
+echo (2/2) 등록된 디스크를 포맷 해주세요.
 diskmgmt.msc
 `)
     }
