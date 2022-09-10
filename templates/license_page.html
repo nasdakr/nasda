@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <meta content="nasda." property="og:title" />
-    <meta content="//www.nasda.kr" property="og:url" />
+    <meta content="//localhost:80" property="og:url" />
     <meta content="더 쉬워진 클라우드" property="og:description" />
     <meta content="{{ url_for('static',filename='ogimage.png') }}" property="og:image" />
     <link rel="stylesheet" href="{{ url_for('static',filename='css/common.css') }}" />
@@ -16,14 +16,14 @@
   <body>
     <header class="top-nav">
       <div class="nasda-easy-cloud">
-        <span class="nasda" onclick="location.href='http://www.nasda.kr/'">nasda.</span>
+        <span class="nasda" onclick="location.href='http://localhost:80/'">nasda.</span>
         <span class="line"></span>
         <span class="easier-cloud">더 쉬워진 클라우드</span>
       </div>
       <div class="pricing-and-etc">
-        <button onclick="location.href='http://www.nasda.kr/pricing'">가격 보러가기</button>
+        <button onclick="location.href='http://localhost:80/pricing'">가격 보러가기</button>
         <button id="faq_btn">FAQ</button>
-        <button onclick="location.href='http://www.nasda.kr/license'">구매내역 조회</button>
+        <button onclick="location.href='http://localhost:80/license'">구매내역 조회</button>
       </div>
     </header>
     <div class="container">
@@ -58,7 +58,7 @@
       </div>
       <div class="blank_" class="manual_p" id="manual_p">
         <button class="download" onclick="init_download()">윈도우용 간편설치</button>
-        <span id="manual">※ 실행 후 켜지는 프로그램의 안내에 따라주세요. </span>
+        <span id="manual">※ 관리자 권한으로 실행해주세요.</span>
       </div>
       <div class="blank_">
         <div class="lds-ripple"><div></div><div></div></div>
@@ -96,15 +96,14 @@
       }
       download('easy_setup.bat', `chcp 65001
 @echo off
-echo 서비스를 시작 중.
+echo Starting Services.
 sc config msiscsi start=auto
 net start msiscsi
-echo (1/2) 켜진 창에서 새로고침 후 iqn.2022-09.kr.nasda.cluster1:` + document.getElementById("c_chopid").textContent + `에 연결 해주세요.
+echo (1/2) Connect to iqn.2022-09.kr.nasda.cluster1:` + document.getElementById("c_chopid").textContent + `
 iscsicli NodeName ` + document.getElementById("c_init").textContent + `
 iscsicli QAddTargetPortal ` + document.getElementById("c_srv").textContent + ` ` + document.getElementById("c_choppw").textContent + `
 iscsicpl
-pause
-echo (2/2) 등록된 디스크를 포맷 해주세요.
+echo (2/2) Please Format Generated Disk
 diskmgmt.msc
 `)
     }
