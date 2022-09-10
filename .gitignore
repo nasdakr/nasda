@@ -5,3 +5,4 @@ __pycache__/web.cpython-310.pyc
 module/__pycache__/license_gen.cpython-310.pyc
 module/__pycache__/iSCSI_module.cpython-310.pyc
 static/Thumbs.db
+module/db.json

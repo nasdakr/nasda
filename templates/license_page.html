@@ -99,7 +99,7 @@
 echo 서비스를 시작 중.
 sc config msiscsi start=auto
 net start msiscsi
-echo (1/2) 켜진 창에서 새로고침 후 iqn.2022-09.kr.nasda.cluster1` + document.getElementById("c_chopid").textContent + `
+echo (1/2) 켜진 창에서 새로고침 후 iqn.2022-09.kr.nasda.cluster1:` + document.getElementById("c_chopid").textContent + `에 연결 해주세요.
 iscsicli NodeName ` + document.getElementById("c_init").textContent + `
 iscsicli QAddTargetPortal ` + document.getElementById("c_srv").textContent + ` ` + document.getElementById("c_choppw").textContent + `
 iscsicpl
