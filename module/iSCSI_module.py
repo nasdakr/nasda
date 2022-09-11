@@ -39,7 +39,7 @@ def iSCSI_init(license):
       headers=headers,
       data=json.dumps({
            "name": f"nasda_HDD_1/{gbs}GB_{id}",
-           "comments": "made by python init server",
+           "comments": f"{license}",
            "volsize": volsize,
            "sync": "STANDARD",
            "compression":"LZ4",
@@ -63,7 +63,7 @@ def iSCSI_init(license):
       data=json.dumps({
            "initiators": [f"iqn.2022-09.kr.nasda.cluster1:pass-{initiator}"],
            "auth_network": [],
-           "comment": "made by python init server"
+           "comment": f"{license}"
        })
      )
     if r.json()["initiators"][0] == f"iqn.2022-09.kr.nasda.cluster1:pass-{initiator}":
