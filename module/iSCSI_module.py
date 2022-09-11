@@ -40,7 +40,9 @@ def iSCSI_init(license):
       data=json.dumps({
            "name": f"nasda_HDD_1/{gbs}GB_{id}",
            "comments": f"{license}",
+           "sparse": True,
            "volsize": volsize,
+           "force_size": False,
            "sync": "STANDARD",
            "compression":"LZ4",
            "deduplication":"OFF",
