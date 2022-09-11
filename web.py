@@ -27,6 +27,22 @@ def license():
 def oldmain():
     return render_template("pricing_old.html")
 
+#TEST SERVER
+@app.route('/api/allocate_100_tsv')
+def test_100():
+    gen_license = generate_license(1, "100test")
+    if gen_license == "400":
+        return redirect(url_for(main)) #실패 페이지 만들어야댐
+    got_license = (gen_license)
+    try:
+        return redirect(url_for('success_page', license=f"{gen_license}")) #예시
+    finally:
+        print("Starting")
+        r_value = iSCSI_init(got_license)
+        print("Done!")
+        print(r_value)
+        #여기에 d
+
 #PAYMENT
 
 @app.route('/api/iscsi_payment/success')

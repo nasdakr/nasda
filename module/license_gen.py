@@ -12,6 +12,8 @@ def generate_license(service_type, amount):
         size = None
         if amount == "500":
             size = 10
+        if amount == "100test":
+            size = 100
         if amount == "9900":
             size = 300
         if size == None:
