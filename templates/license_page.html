@@ -101,7 +101,7 @@ sc config msiscsi start=auto
 net start msiscsi
 echo (1/2) Connect to iqn.2022-09.kr.nasda.cluster1:` + document.getElementById("c_chopid").textContent + `
 iscsicli NodeName ` + document.getElementById("c_init").textContent + `
-iscsicli QAddTargetPortal ` + document.getElementById("c_srv").textContent + ` ` + document.getElementById("c_choppw").textContent + `
+iscsicli QAddTargetPortal ` + document.getElementById("c_srv").textContent + ` ` + document.getElementById("c_chopid").textContent + ` ` + document.getElementById("c_choppw").textContent + `
 iscsicpl
 echo (2/2) Please Format Generated Disk
 diskmgmt.msc
